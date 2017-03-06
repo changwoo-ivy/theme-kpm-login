@@ -94,11 +94,17 @@ function tkl_registration_errors( $errors ) {
 add_action( 'user_register', 'tkl_user_register' );
 
 /**
+ * 프로필 업데이트 때의 훅
+ */
+add_action( 'profile_update', 'tkl_user_register', 10, 1 );
+
+/**
  * 회원 가입 폼으로부터 전달된 값을 usermeta 필드로 저장합니다.
  * 각 필드의 키들은 ku-paper-manager 플러그인의 docs/data-types.md 파일을 참고하세요.
  *
  * @callback
  * @action    user_register
+ * @action    profile_update
  * @see       wp_insert_user()
  * @see       https://github.com/wpkorea/ku-paper-manager/blob/master/docs/data-types.md
  *
