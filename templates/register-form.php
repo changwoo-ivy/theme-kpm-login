@@ -6,7 +6,6 @@
 
 /* theme **KPM** login's register form */
 ?>
-<h3>Theme KPM Login</h3>
 
 <div class="tml tml-register" id="theme-my-login<?php $template->the_instance(); ?>">
 
@@ -27,7 +26,7 @@
       <label for="user_email<?php $template->the_instance(); ?>">가입용 이메일</label>
       <input type="text" name="user_email" id="user_email<?php $template->the_instance(); ?>" class="input" value="<?php $template->the_posted_value( 'user_email' ); ?>" size="20"/>
       <label for="alt_email">
-        <input type="checkbox" id="alt_email" name="alt_email" value="yes" <?php echo $template->the_posted_value( 'alt_email' ) == 'yes' ? 'checked' : ''; ?>"/>
+        <input type="checkbox" id="alt_email" name="alt_email" value="yes" <?php echo $template->the_posted_value( 'alt_email' ) == 'yes' ? 'checked' : ''; ?>/>
         선택: 논문 제출 및 심사용 이메일을 별도로 사용.
       </label>
     </p>
@@ -39,30 +38,29 @@
 
 	  <?php do_action( 'register_form' ); ?>
 
-    <p class="tml-user-email-wrap">
+    <p class="kpm_name_kr-wrap">
       <label for="kpm_name_kr">회원 이름 (한글)</label>
-      <input type="text" id="kpm_name_kr" name="kpm_name_kr"
-          value="<?php $template->the_posted_value( 'kpm_submission_email' ); ?>">
+      <input type="text" id="kpm_name_kr" name="kpm_name_kr" class="input" value="<?php $template->the_posted_value( 'kpm_submission_email' ); ?>">
     </p>
 
-    <p class="tml-user-email-wrap">
+    <p class="kpm_name_en-wrap">
       <label for="kpm_name_en">회원 이름 (영문)</label>
-      <input type="text" id="kpm_name_en" name="kpm_name_en" value="<?php $template->the_posted_value( 'kpm_name_en' ); ?>">
+      <input type="text" id="kpm_name_en" name="kpm_name_en" class="input"  value="<?php $template->the_posted_value( 'kpm_name_en' ); ?>">
     </p>
 
-    <p class="tml-user-email-wrap">
+    <p class="kpm_affiliation-wrap">
       <label for="kpm_affiliation">소속 단체</label>
-      <input type="text" id="kpm_affiliation" name="kpm_affiliation" value="<?php $template->the_posted_value( 'kpm_affiliation' ); ?>">
+      <input type="text" id="kpm_affiliation" name="kpm_affiliation" class="input"  value="<?php $template->the_posted_value( 'kpm_affiliation' ); ?>">
     </p>
 
-    <p class="tml-user-email-wrap">
+    <p class="kpm_telephone-wrap">
       <label for="kpm_telephone">유선 전화 번호</label>
-      <input type="text" id="kpm_telephone" name="kpm_telephone" value="<?php $template->the_posted_value( 'kpm_telephone' ); ?>">
+      <input type="text" id="kpm_telephone" name="kpm_telephone" class="input"  value="<?php $template->the_posted_value( 'kpm_telephone' ); ?>">
     </p>
 
-    <p class="tml-user-email-wrap">
+    <p class="kpm_mobile_phone-wrap">
       <label for="kpm_mobile_phone">이동 전화 번호</label>
-      <input type="text" id="kpm_mobile_phone" name="kpm_mobile_phone" value="<?php $template->the_posted_value( 'kpm_mobile_phone' ); ?>">
+      <input type="text" id="kpm_mobile_phone" name="kpm_mobile_phone" class="input"  value="<?php $template->the_posted_value( 'kpm_mobile_phone' ); ?>">
     </p>
 
     <p class="tml-registration-confirmation" id="reg_passmail<?php $template->the_instance(); ?>">
