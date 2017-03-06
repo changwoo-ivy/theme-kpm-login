@@ -40,7 +40,7 @@
 
     <p class="kpm_name_kr-wrap">
       <label for="kpm_name_kr">회원 이름 (한글)</label>
-      <input type="text" id="kpm_name_kr" name="kpm_name_kr" class="input" value="<?php $template->the_posted_value( 'kpm_submission_email' ); ?>">
+      <input type="text" id="kpm_name_kr" name="kpm_name_kr" class="input" value="<?php $template->the_posted_value( 'kpm_name_kr' ); ?>">
     </p>
 
     <p class="kpm_name_en-wrap">
