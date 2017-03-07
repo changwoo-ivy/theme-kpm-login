@@ -96,7 +96,7 @@ add_action( 'user_register', 'tkl_user_register' );
 /**
  * 프로필 업데이트 때의 훅
  */
-add_action( 'profile_update', 'tkl_user_register', 10, 1 );
+add_action( 'profile_update', 'tkl_profile_update', 10, 1 );
 
 /**
  * 회원 가입 폼으로부터 전달된 값을 usermeta 필드로 저장합니다.
@@ -121,6 +121,13 @@ function tkl_user_register( $user_id ) {
 		$user->set_role( $role->name );
 	}
 
+	tkl_profile_update( $user_id );
+}
+
+function tkl_profile_update( $user_id ) {
+
+	$user = get_user_by( 'id', $user_id );
+
 	// 한글 이름
 	if ( isset( $_POST['kpm_name_kr'] ) && ! empty( $_POST['kpm_name_kr'] ) ) {
 		$sanitized = sanitize_text_field( $_POST['kpm_name_kr'] );
@@ -139,7 +146,6 @@ function tkl_user_register( $user_id ) {
 		$sanitized = sanitize_email( $_POST['kpm_submission_email'] );
 		update_user_meta( $user_id, 'kpm_submission_email', $sanitized );
 	} else {
-
 		update_user_meta( $user_id, 'kpm_submission_email', $user->user_email );
 	}
 
@@ -161,5 +167,4 @@ function tkl_user_register( $user_id ) {
 		update_user_meta( $user_id, 'kpm_mobile_phone', $sanitized );
 	}
 }
-
 
