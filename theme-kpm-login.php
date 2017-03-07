@@ -76,11 +76,11 @@ function tkl_registration_errors( $errors ) {
 		$errors->add( 'empty_kpm_affiliation', '소속단체를 입력해 주세요' );
 	}
 
-	if ( empty( isset( $_POST['kpm_kpm_telephone'] ) && trim( $_POST['kpm_kpm_telephone'] ) ) ) {
+	if ( empty( isset( $_POST['kpm_telephone'] ) && trim( $_POST['kpm_telephone'] ) ) ) {
 		$errors->add( 'empty_kpm_telephone', '유선전화 번호를 입력해 주세요' );
 	}
 
-	if ( empty( isset( $_POST['kpm_kpm_mobile_phone'] ) && trim( $_POST['kpm_kpm_mobile_phone'] ) ) ) {
+	if ( empty( isset( $_POST['kpm_mobile_phone'] ) && trim( $_POST['kpm_mobile_phone'] ) ) ) {
 		$errors->add( 'empty_kpm_mobile_phone', '이동전화 번호를 입력해 주세요' );
 	}
 
