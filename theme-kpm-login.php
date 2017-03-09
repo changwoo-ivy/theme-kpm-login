@@ -96,7 +96,7 @@ add_action( 'user_register', 'tkl_user_register' );
 /**
  * 프로필 업데이트 때의 훅
  */
-add_action( 'profile_update', 'tkl_profile_update', 10, 1 );
+add_action( 'profile_update', 'tkl_user_update', 10, 1 );
 
 /**
  * 회원 가입 폼으로부터 전달된 값을 usermeta 필드로 저장합니다.
@@ -121,10 +121,14 @@ function tkl_user_register( $user_id ) {
 		$user->set_role( $role->name );
 	}
 
-	tkl_profile_update( $user_id );
+	tkl_profile_update( $user_id, FALSE );
 }
 
-function tkl_profile_update( $user_id ) {
+function tkl_user_update( $user_id ) {
+	tkl_profile_update( $user_id, TRUE );
+}
+
+function tkl_profile_update( $user_id, $is_update ) {
 
 	$user = get_user_by( 'id', $user_id );
 
@@ -140,14 +144,22 @@ function tkl_profile_update( $user_id ) {
 		update_user_meta( $user_id, 'kpm_name_en', $sanitized );
 	}
 
-	// 사용자의 로그인 이메일로부터 제출 및 심사용 이메일 별도 저장
-	// 심사용 메일은 로그인 메일과 별개로 사용할 수도 있다.
-	if ( isset( $_POST['alt_email'] ) && $_POST['alt_email'] == 'yes' ) {
+	if( $is_update ){
+		// 프로필 업데이트
 		$sanitized = sanitize_email( $_POST['kpm_submission_email'] );
 		update_user_meta( $user_id, 'kpm_submission_email', $sanitized );
 	} else {
-		update_user_meta( $user_id, 'kpm_submission_email', $user->user_email );
+		// 신규 가입
+		// 사용자의 로그인 이메일로부터 제출 및 심사용 이메일 별도 저장
+		// 심사용 메일은 로그인 메일과 별개로 사용할 수도 있다.
+		if ( isset( $_POST['alt_email'] ) && $_POST['alt_email'] == 'yes' ) {
+			$sanitized = sanitize_email( $_POST['kpm_submission_email'] );
+			update_user_meta( $user_id, 'kpm_submission_email', $sanitized );
+		} else {
+			update_user_meta( $user_id, 'kpm_submission_email', $user->user_email );
+		}
 	}
+
 
 	// 소속 단체
 	if ( isset( $_POST['kpm_affiliation'] ) && ! empty( $_POST['kpm_affiliation'] ) ) {
