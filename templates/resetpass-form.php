@@ -17,7 +17,7 @@ Theme My Login will always look in your theme's directory first, before using th
     </div>
     <div class="pass2-custom-wrap">
       <p>
-        <label for="pass2-custom-wrap"><?php _e( 'Confirm new password', 'theme-my-login' ); ?></label>
+        <label for="pass2-custom-wrap"><?php _e( 'Confirm Password', 'theme-my-login' ); ?></label>
         <input type="password" name="pass2" id="pass2-custom" class="input" size="20" value="" autocomplete="off"/>
       </p>
     </div>

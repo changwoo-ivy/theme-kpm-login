@@ -64,6 +64,10 @@ add_filter( 'registration_errors', 'tkl_registration_errors' );
  */
 function tkl_registration_errors( $errors ) {
 
+	if ( !isset($_POST['kpm_user_agreement']) || !filter_var($_POST['kpm_user_agreement'], FILTER_VALIDATE_BOOLEAN )) {
+		$errors->add( 'kpm_user_agreement', '회원 약관에 동의해 주십시오' );
+	}
+
 	if ( empty( isset( $_POST['kpm_name_kr'] ) && trim( $_POST['kpm_name_kr'] ) ) ) {
 		$errors->add( 'empty_kpm_name_kr', '한글 회원 이름을 채워 주세요' );
 	}
